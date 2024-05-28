@@ -2,10 +2,10 @@
   "name": "api-login",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "back-end/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon back-end/app.js"
   },
   "author": "",
   "license": "ISC",
