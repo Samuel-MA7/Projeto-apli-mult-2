@@ -43,7 +43,7 @@ async function logarUsuario(email, senha){
     //comparar a senha fornecida com a do banco de dados
     const senha_comparada = await bcrypt.compare(senha,usuario.senha)
     if(!senha_comparada){
-        throw new Error('Senha inválida!');
+        throw new Error('Senha inválida!')
     }
     try {
         const token = jwt.sign(
@@ -62,7 +62,21 @@ async function logarUsuario(email, senha){
     }
 }
 
+async function perfilUsuario(userId){
+    try{
+        //excluir o campo de senha
+        const usuario = await User.findById(userId).select('-senha')
+        if(!usuario){
+            throw new Error('Usuário não encontrado!')
+        }
+        return usuario
+    }catch(error){
+        return { msg: 'Ocorreu um erro no servidor!' }
+    }
+}
+
 module.exports={
     cadastrarUsuario,
-    logarUsuario
+    logarUsuario,
+    perfilUsuario
 }

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
         window.location.href = '/'
     }
 
-    const resposta = await fetch('/profile',{
+    const resposta = await fetch('/auth/profile',{
         method:'GET',
         headers:{
             'Authorization':`Bearer ${token}`
@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const resultado = await resposta.json()
     if(resposta.ok){
         document.getElementById('nome').textContent += resultado.nome
+        console.log(resultado)
+        console.log(resposta)
     }else{
         //levar para a página inicial se o token for inválido
         window.location.href = '/'
